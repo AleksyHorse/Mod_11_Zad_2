@@ -31,9 +31,10 @@ def edit_entry(entry_id):
                 form.populate_obj(entry)
                 db.session.commit()
                 flash('Record was successfully edited')
+                return redirect(url_for("index"))
             else:
                 errors = form.errors
-        return redirect(url_for("index"))
+        return render_template("entry_form.html", form = form, errors=errors)
     else:
         form = EntryForm()
         if request.method == 'POST':
