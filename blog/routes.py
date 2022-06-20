@@ -33,7 +33,7 @@ def edit_entry(entry_id):
                 flash('Record was successfully edited')
             else:
                 errors = form.errors
-        return render_template("entry_form.html", form = form, errors=errors)
+        return redirect(url_for("index"))
     else:
         form = EntryForm()
         if request.method == 'POST':
